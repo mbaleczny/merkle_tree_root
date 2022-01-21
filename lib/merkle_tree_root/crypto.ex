@@ -1,7 +1,9 @@
 defmodule MerkleTreeRoot.Crypto do
-  def sha256(input) do
-    result = :crypto.hash(:sha256, input)
+  @callback sha256(binary()) :: binary
 
-    Base.encode16(result, case: :lower)
+  def sha256(input), do: impl().sha256(input)
+
+  def impl do
+    Application.get_env(:merkle_tree_root, :crypto, MerkleTreeRoot.Crypto.Sha256)
   end
 end
