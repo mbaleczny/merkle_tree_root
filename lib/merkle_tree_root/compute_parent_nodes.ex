@@ -7,7 +7,7 @@ defmodule MerkleTreeRoot.ComputeParentNodes do
 
   @node_children_count 2
 
-  @spec call(Enumerable.t(binary())) :: Enumerable.t(binary())
+  @spec call(Enumerable.t()) :: Enumerable.t()
   def call(input) do
     input
     |> Stream.chunk_every(@node_children_count)

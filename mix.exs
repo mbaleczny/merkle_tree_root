@@ -23,6 +23,7 @@ defmodule MerkleTreeRoot.MixProject do
     [
       {:benchee, "~> 1.0", only: :dev},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
       {:mox, "~> 1.0", only: :test}
     ]
   end

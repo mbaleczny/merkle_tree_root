@@ -5,7 +5,7 @@ defmodule MerkleTreeRoot.ComputeRootStream do
     Uses overloaded functions and recursion to proceed until reaches to the root.
   """
 
-  @spec call(Enumerable.t(binary)) :: binary
+  @spec call(Enumerable.t()) :: binary
   def call(stream) do
     elements_count = Enum.count(stream)
     number_of_rounds = compute_runs_count(elements_count)
