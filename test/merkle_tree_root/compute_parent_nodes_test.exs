@@ -1,4 +1,4 @@
-defmodule MerkleTreeRoot.CalculateParentNodesTest do
+defmodule MerkleTreeRoot.ComputeParentNodesTest do
   use ExUnit.Case
   import Mox
 
@@ -10,7 +10,7 @@ defmodule MerkleTreeRoot.CalculateParentNodesTest do
 
   describe "call/1" do
     test "returns correct result for test vector input" do
-      assert MerkleTreeRoot.CalculateParentNodes.call(["ab", "c"]) |> Enum.to_list() == ["abc"]
+      assert MerkleTreeRoot.ComputeParentNodes.call(["ab", "c"]) |> Enum.to_list() == ["abc"]
     end
   end
 end

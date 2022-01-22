@@ -1,31 +1,31 @@
 defmodule MerkleTreeRoot do
   @moduledoc """
-    Defines all implement approaches of calculating Merkle Tree Root.
+    Defines all implement approaches of computing Merkle Tree Root.
   """
 
-  @spec calculate_root_from_file(:list | :stream | :task_async_stream, binary()) :: binary()
-  def calculate_root_from_file(method, file_path) when is_binary(file_path) do
+  @spec compute_root_from_file(:list | :stream | :task_async_stream, binary()) :: binary()
+  def compute_root_from_file(method, file_path) when is_binary(file_path) do
     if File.exists?(file_path) do
-      calculate_root(method, file_path)
+      compute_root(method, file_path)
     else
       raise ArgumentError, message: "File #{file_path} does not exists."
     end
   end
 
-  defp calculate_root(:list, file_path) do
+  defp compute_root(:list, file_path) do
     file_path
     |> read_file_content()
     |> Enum.to_list()
-    |> MerkleTreeRoot.CalculateRoot.call()
+    |> MerkleTreeRoot.ComputeRoot.call()
   end
 
-  defp calculate_root(:stream, file_path) do
+  defp compute_root(:stream, file_path) do
     file_path
     |> read_file_content()
-    |> MerkleTreeRoot.CalculateRootStream.call()
+    |> MerkleTreeRoot.ComputeRootStream.call()
   end
 
-  defp calculate_root(:task_async_stream, file_path) do
+  defp compute_root(:task_async_stream, file_path) do
     stream = file_path |> read_file_content()
 
     elements_count = Enum.count(stream)
@@ -34,9 +34,9 @@ defmodule MerkleTreeRoot do
 
     stream
     |> Stream.chunk_every(chunk_size)
-    |> Task.async_stream(&MerkleTreeRoot.CalculateRootStream.call/1)
+    |> Task.async_stream(&MerkleTreeRoot.ComputeRootStream.call/1)
     |> Stream.map(fn {:ok, result} -> result end)
-    |> MerkleTreeRoot.CalculateRootStream.call()
+    |> MerkleTreeRoot.ComputeRootStream.call()
   end
 
   defp read_file_content(file_path) do

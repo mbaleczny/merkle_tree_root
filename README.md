@@ -1,6 +1,6 @@
 # MerkleTreeRoot
 
-Calculating Merkle Tree Root implementation in Elixir.
+Computing Merkle Tree Root implementation in Elixir.
 
 ## Requirements
 
@@ -22,7 +22,7 @@ iex -S mix
 ```
 
 ```elixir
-iex> MerkleTreeRoot.calculate_root_from_file(:list, "input.txt")
+iex> MerkleTreeRoot.compute_root_from_file(:list, "input.txt")
 ```
 
 ## Benchmarks

@@ -1,4 +1,4 @@
-defmodule MerkleTreeRoot.CalculateRootTest do
+defmodule MerkleTreeRoot.ComputeRootTest do
   use ExUnit.Case
   import Mox
 
@@ -10,15 +10,15 @@ defmodule MerkleTreeRoot.CalculateRootTest do
 
   describe "call/1" do
     test "returns correct merkle tree root for test vector with even number of elements" do
-      assert MerkleTreeRoot.CalculateRoot.call(["a", "b", "c", "d"]) == "abcd"
+      assert MerkleTreeRoot.ComputeRoot.call(["a", "b", "c", "d"]) == "abcd"
     end
 
     test "returns correct merkle tree root for test vector with odd number of elements" do
-      assert MerkleTreeRoot.CalculateRoot.call(["a", "b", "c"]) == "abcc"
+      assert MerkleTreeRoot.ComputeRoot.call(["a", "b", "c"]) == "abcc"
     end
 
     test "returns nil for empty vector" do
-      refute MerkleTreeRoot.CalculateRoot.call([])
+      refute MerkleTreeRoot.ComputeRoot.call([])
     end
   end
 end
