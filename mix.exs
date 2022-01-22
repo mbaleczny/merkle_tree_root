@@ -22,6 +22,7 @@ defmodule MerkleTreeRoot.MixProject do
   defp deps do
     [
       {:benchee, "~> 1.0", only: :dev},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:mox, "~> 1.0", only: :test}
     ]
   end

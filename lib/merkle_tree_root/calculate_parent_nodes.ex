@@ -33,9 +33,10 @@ defmodule MerkleTreeRoot.CalculateParentNodes do
     result as doubling the single element.
   """
   defp get_accumulator(chunk) do
-    cond do
-      length(chunk) == 1 -> Enum.at(chunk, 0)
-      true -> ""
+    if length(chunk) == 1 do
+      List.first(chunk)
+    else
+      ""
     end
   end
 end
