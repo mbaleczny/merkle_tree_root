@@ -1,21 +1,34 @@
 # MerkleTreeRoot
 
-**TODO: Add description**
+Calculating Merkle Tree Root implementation in Elixir.
 
-## Installation
+## Requirements
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `merkle_tree_root` to your list of dependencies in `mix.exs`:
+Installed Elixir v1.13 and Erlang v24.2 or asdf (https://github.com/asdf-vm/asdf) with Elixir and Erlang plugins.
 
-```elixir
-def deps do
-  [
-    {:merkle_tree_root, "~> 0.1.0"}
-  ]
-end
+Having asdf installed run:
+
+```bash
+asdf install
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/merkle_tree_root>.
+## Run
 
+```bash
+mix deps.get
+mix compile
+...
+iex -S mix
+```
+
+```elixir
+iex> MerkleTreeRoot.calculate_root_from_file(:list, "input.txt")
+```
+
+## Benchmarks
+
+Compare approaches by running:
+
+```bash
+mix run samples/run.exs
+```
