@@ -1,10 +1,11 @@
 defmodule MerkleTreeRoot.CalculateParentNodes do
   @node_children_count 2
 
-  def call(input) when is_list(input) do
+  @spec call(Enumerable.t(binary())) :: Enumerable.t(binary())
+  def call(input) do
     input
-    |> Enum.chunk_every(@node_children_count)
-    |> Enum.map(&hash_chunk/1)
+    |> Stream.chunk_every(@node_children_count)
+    |> Stream.map(&hash_chunk/1)
   end
 
   defp hash_chunk(chunk) do

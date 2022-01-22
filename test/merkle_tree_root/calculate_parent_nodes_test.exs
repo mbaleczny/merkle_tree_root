@@ -10,7 +10,7 @@ defmodule MerkleTreeRoot.CalculateParentNodesTest do
 
   describe "call/1" do
     test "returns correct result for test vector input" do
-      assert MerkleTreeRoot.CalculateParentNodes.call(["ab", "c"]) == ["abc"]
+      assert MerkleTreeRoot.CalculateParentNodes.call(["ab", "c"]) |> Enum.to_list() == ["abc"]
     end
   end
 end

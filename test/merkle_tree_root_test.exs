@@ -9,18 +9,18 @@ defmodule MerkleTreeRootTest do
     verify_on_exit!(opts)
   end
 
-  describe "calculate_root_from_file/1" do
+  describe "calculate_root_from_file/2" do
     test "returns calculated root for data read from file" do
       file_path = "input.txt"
 
-      assert MerkleTreeRoot.calculate_root_from_file(file_path)
+      assert MerkleTreeRoot.calculate_root_from_file(:list, file_path)
     end
 
-    test "returns ArgumentError when file does not exists" do
+    test "raise ArgumentError when file does not exists" do
       file_path = "not_existing_file"
 
       assert_raise ArgumentError, "File #{file_path} does not exists.", fn ->
-        MerkleTreeRoot.calculate_root_from_file(file_path)
+        MerkleTreeRoot.calculate_root_from_file(:list, file_path)
       end
     end
   end

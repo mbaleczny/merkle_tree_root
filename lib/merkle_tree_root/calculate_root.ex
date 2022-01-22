@@ -9,6 +9,7 @@ defmodule MerkleTreeRoot.CalculateRoot do
   defp calculate(input) when is_list(input) do
     input
     |> MerkleTreeRoot.CalculateParentNodes.call()
+    |> Enum.to_list()
     |> calculate()
   end
 end
