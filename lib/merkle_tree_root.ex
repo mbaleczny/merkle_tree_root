@@ -1,4 +1,8 @@
 defmodule MerkleTreeRoot do
+  @moduledoc """
+    Defines all implement approaches of calculating Merkle Tree Root.
+  """
+
   @spec calculate_root_from_file(:list | :stream | :task_async_stream, binary()) :: binary()
   def calculate_root_from_file(method, file_path) when is_binary(file_path) do
     if File.exists?(file_path) do

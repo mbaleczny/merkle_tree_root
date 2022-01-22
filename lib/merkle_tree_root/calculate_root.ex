@@ -1,4 +1,11 @@
 defmodule MerkleTreeRoot.CalculateRoot do
+  @moduledoc """
+    Calculates Merkle Tree Root for list of binaries.
+
+    Uses overloaded functions and recursion to proceed until reaches to the root.
+  """
+
+  @spec call(list(binary())) :: binary()
   def call(input) do
     calculate(input)
   end

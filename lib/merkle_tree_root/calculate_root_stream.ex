@@ -1,4 +1,10 @@
 defmodule MerkleTreeRoot.CalculateRootStream do
+  @moduledoc """
+    Calculates Merkle Tree Root using approach with Streams.
+
+    Uses overloaded functions and recursion to proceed until reaches to the root.
+  """
+
   @spec call(Enumerable.t(binary)) :: binary
   def call(stream) do
     elements_count = Enum.count(stream)
@@ -17,6 +23,10 @@ defmodule MerkleTreeRoot.CalculateRootStream do
     |> calculate(current_run + 1, number_of_rounds)
   end
 
+  @doc """
+    By knowing how many elements there is in the input Stream, we can determine number of levels of a tree
+    by calculating log2 of elements count. For odd number of elements we simple increment it by one.
+  """
   defp calculate_runs_count(elements_count) do
     if rem(elements_count, 2) == 2 do
       elements_count

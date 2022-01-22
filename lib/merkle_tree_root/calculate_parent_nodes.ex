@@ -1,4 +1,10 @@
 defmodule MerkleTreeRoot.CalculateParentNodes do
+  @moduledoc """
+    Calculates hashed parent of two adjacent items in a Enumerable input.
+
+    Result has form of a Stream.
+  """
+
   @node_children_count 2
 
   @spec call(Enumerable.t(binary())) :: Enumerable.t(binary())
@@ -8,6 +14,9 @@ defmodule MerkleTreeRoot.CalculateParentNodes do
     |> Stream.map(&hash_chunk/1)
   end
 
+  @doc """
+    Concatenates adjacent elements in a Enumerable and calculates its hash.
+  """
   defp hash_chunk(chunk) do
     acc = get_accumulator(chunk)
 
@@ -16,6 +25,13 @@ defmodule MerkleTreeRoot.CalculateParentNodes do
     |> MerkleTreeRoot.Crypto.sha256()
   end
 
+  @doc """
+    Returns initial value of accumulator for Enum.reduce/3.
+
+    If chunk contains only one element, then the initial value
+    is this single element. So concatenated element to it gives same
+    result as doubling the single element.
+  """
   defp get_accumulator(chunk) do
     cond do
       length(chunk) == 1 -> Enum.at(chunk, 0)

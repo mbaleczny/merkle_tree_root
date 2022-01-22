@@ -1,4 +1,7 @@
 defmodule MerkleTreeRoot.Crypto do
+  @moduledoc """
+    Defines behaviour for cryptographic hash functions.
+  """
   @callback sha256(binary()) :: binary
 
   def sha256(input), do: impl().sha256(input)
