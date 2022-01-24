@@ -29,10 +29,8 @@ defmodule MerkleTreeRoot.ComputeRootStream do
     |> compute(current_run + 1, number_of_rounds)
   end
 
-  @doc """
-    By knowing how many elements there is in the input Stream, we can determine number of levels of a tree
-    by calculating log2 of elements count. For odd number of elements we simple increment it by one.
-  """
+  # By knowing how many elements there is in the input Stream, we can determine number of levels of a tree
+  # by calculating log2 of elements count. For odd number of elements we simple increment it by one.
   defp compute_runs_count(elements_count) do
     if rem(elements_count, 2) == 0 do
       elements_count
