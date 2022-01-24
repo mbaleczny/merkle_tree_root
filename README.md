@@ -3,11 +3,11 @@
 Computing Merkle Tree Root implementation in Elixir.
 
 Project contains three approaches:
-- simple
-- with use of Streams
-- with use of `Task.async_stream/3`
+- basic - computing loaded list of all hashes recursively level by level to reach tree root,
+- with use of Streams - running Stream build recursively number of times to reach tree root,
+- with use of `Task.async_stream/3` - using parts of approach above with additional chunking the stream to use concurrency.
 
-Looking at benchmarks result below for given data set the simple one is the fastest and the most efficient of all implemented approaches.
+Looking at benchmarks result below for given data set the basic one is the fastest and the most efficient of all implemented approaches.
 
 Why did I implemented three approaches and compared them? Simply out of my curiosity.
 

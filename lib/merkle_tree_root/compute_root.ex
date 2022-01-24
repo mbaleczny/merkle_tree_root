@@ -3,6 +3,8 @@ defmodule MerkleTreeRoot.ComputeRoot do
     Computes Merkle Tree Root for list of binaries.
 
     Uses overloaded functions and recursion to proceed until reaches to the root.
+
+    For empty list returns nil.
   """
 
   @spec call(list(binary())) :: binary()
